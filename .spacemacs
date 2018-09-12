@@ -38,6 +38,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
+     java
      docker
      auto-completion
      ;; better-defaults
@@ -60,9 +61,9 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(
-     meghanada
-     groovy-mode
-     gradle-mode
+     ;; meghanada
+     ;; groovy-mode
+     ;; gradle-mode
      latex-preview-pane
      import-js
      )
@@ -87,6 +88,10 @@ You should not put any user code in there besides modifying the variable
 values."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
+  (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
+
+  (add-to-list 'package-pinned-packages '(eclim. "melpa-stable") t)
   (setq-default
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -335,10 +340,10 @@ you should place your code here."
   (push '("\\.js\\'" . react-mode) auto-mode-alist)
   (defun my-setup-indent (n)
     ;; java/c/c++
-    (setq standard-indent n)
-    (setq tab-width n)
+    (setq standard-indent 4)
+    (setq tab-width 4)
     (setq indent-tabs-mode nil)
-    (setq c-basic-offset n)
+    (setq c-basic-offset 4)
     ;; web development
     (setq javascript-indent-level n) ; javascript-mode
     (setq js-indent-level n) ; js-mode
@@ -352,15 +357,17 @@ you should place your code here."
   (my-setup-indent 2)
 
   ;; Java mode
-  (require 'meghanada)
-  (add-hook 'java-mode-hook
-            (lambda ()
-              (meghanada-mode t)
-              (gradle-mode t)
-              (add-hook 'before-save-hook 'delete-trailing-whitespace)))
-  (add-hook 'groovy-mode-hool
-            (lambda ()
-              (gradle-mode t)))
+  (setq eclim-eclipse-dirs '("/usr/local/eclipse")
+        eclim-executable '("/usr/local/eclipse/eclimd"))
+  ;; (require 'meghanada)
+  ;; (add-hook 'java-mode-hook
+  ;;          (lambda ()
+  ;;             (meghanada-mode t)
+  ;;             (gradle-mode t)
+  ;;             (add-hook 'before-save-hook 'delete-trailing-whitespace)))
+  ;; (add-hook 'groovy-mode-hool
+  ;;           (lambda ()
+  ;;             (gradle-mode t)))
 
   (spacemacs/set-leader-keys-for-major-mode 'java-mode "j j" 'meghanada-jump-declaration)
 
