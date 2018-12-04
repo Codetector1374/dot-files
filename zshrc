@@ -65,6 +65,7 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   osx
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -18,7 +18,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'c.vim'
 " vim-c0 plugin on Github repo
-Plugin 'cmugpi/vim-c0'
+" Plugin 'cmugpi/vim-c0'
 
 call vundle#end()
 
@@ -27,6 +27,9 @@ call vundle#end()
 set ruler
 set number
 
+set tabstop=2
+set softtabstop=0 expandtab
+set shiftwidth=2
 "Enable filetype detection and syntax hilighting
 syntax on
 filetype on
