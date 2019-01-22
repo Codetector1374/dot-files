@@ -68,7 +68,6 @@ values."
      ;; gradle-mode
      latex-preview-pane
      import-js
-     smartparens-config
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -406,10 +405,17 @@ you should place your code here."
     (when buffer-file-name (save-buffer)))
   (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 
-  (add-hook 'c-mode-common-hook #'smartparens-mode)
-  (add-hook 'c-mode-common-hook (lambda ()
-                                  (set 'sp-escape-quotes-after-insert nil)
-                                  ))
+  (defun sp-escape-config ()
+    (set 'sp-escape-quotes-after-insert nil))
+
+  (add-hook 'c-mode-common-hook 'sp-escape-config)
+
+
+  ;; enable CLang
+  (setq-default dotspacemacs-configuration-layers
+                '((c-c++ :variables c-c++-enable-clang-support t)))
+  (global-set-key [C-M-tab] 'clang-format-region)
+
   ;; (setq-local 'sp-escape-quotes-after-insert nil)
   )
 
