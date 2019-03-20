@@ -2,8 +2,6 @@
 
 Guide to setup on/off operation of GPU. Based on works collected in [this](https://bbs.archlinux.org/viewtopic.php?id=238389) thread.
 
-GPU management scripts were created by [tyrells](https://bbs.archlinux.org/viewtopic.php?pid=1825298#p1825298) to which manipulation of blacklist config was added.
-
 ## Packages
 - nvidia
 - bumblebee (for optirun)
