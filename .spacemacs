@@ -52,8 +52,7 @@ values."
      osx
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom
-            shell-default-shell 'eshell)
+            shell-default-position 'bottom)
      spell-checking
      syntax-checking
      python
@@ -335,7 +334,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq ycmd-server-command '("python2" "/home/codetector/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd"))
+  (setq ycmd-server-command '("python" "/home/codetector/projects/build/ycmd/ycmd"))
   (setq ycmd-force-semantic-completion t)
   (setq powerline-default-separator 'utf-8)
   ;; (setq-default dotspacemacs-configuration-layers
