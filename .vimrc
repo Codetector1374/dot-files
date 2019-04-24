@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'Superbil/llvm.vim'
 
 Plugin 'c.vim'
 " vim-c0 plugin on Github repo
