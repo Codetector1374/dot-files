@@ -1090,5 +1090,6 @@
         }
     ],
     "vim.easymotion": true,
-    "git.autofetch": true
+    "git.autofetch": true,
+    "keyboard.dispatch": "keyCode"
 }
