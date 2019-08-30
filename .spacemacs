@@ -28,6 +28,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     lsp
      (typescript :variables
                  typescript-fmt-on-save t)
      vimscript
@@ -350,6 +351,7 @@ you should place your code here."
   (setq js2-strict-missing-semi-warning nil)
   (setq js2-missing-semi-one-line-override nil)
   (push '("\\.js\\'" . react-mode) auto-mode-alist)
+  (push '("\\.tsx\\'" . react-mode) auto-mode-alist)
   (defun my-setup-indent (n)
     ;; java/c/c++
     (setq standard-indent 4)
