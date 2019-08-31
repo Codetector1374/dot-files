@@ -26,16 +26,16 @@ font pango:monospace 10
 # screen before suspend.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-bindsym Mod1+Control+l exec i3lock --nofork
+bindsym Mod1+Control+l exec i3lock --color=000000 --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
 
 bindsym Mod4+p exec --no-startup-id sh ~/.disp-init.sh eDP-1 DP-3
 
@@ -195,4 +195,10 @@ exec_always --no-startup-id ~/.kbd-init.sh
 exec --no-startup-id xinput set-prop 12 "libinput Click Method Enabled" 0 1
 exec --no-startup-id xinput set-prop 12 "libinput Natural Scrolling Enabled" 1
 
-exec_always --no-startup-id feh --bg-scale ~/wallpaper
+exec_always --no-startup-id feh --bg-scale ~/.wallpaper
+
+exec compton --config ~/.config/compton.conf -b
+
+# fcitx
+exec --no-startup-id fcitx -d
+
