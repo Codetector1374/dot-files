@@ -26,23 +26,23 @@ font pango:monospace 10
 # screen before suspend.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-bindsym Mod1+Control+l exec i3lock --nofork
+bindsym Mod1+Control+l exec i3lock --color=000000 --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $AUDIO_ID toggle
 
 bindsym Mod4+p exec --no-startup-id sh ~/.disp-init.sh eDP-1 DP-3
 
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -188,13 +188,14 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
-
 exec_always --no-startup-id ~/.kbd-init.sh
 
 exec_always --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Click Method Enabled" 0 1
 exec_always --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Natural Scrolling Enabled" 1
 
-exec_always --no-startup-id feh --bg-scale ~/wallpaper
+exec_always --no-startup-id feh --bg-scale ~/.wallpaper
+
 exec compton --config ~/.config/compton.conf -b
-exec fcitx -d
+
+# fcitx
+exec --no-startup-id fcitx -d
