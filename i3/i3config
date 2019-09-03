@@ -26,7 +26,7 @@ font pango:monospace 10
 # screen before suspend.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-bindsym Mod1+Control+l exec i3lock --color=000000 --nofork
+bindsym Mod1+Control+l exec i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -97,7 +97,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+q layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -196,6 +196,8 @@ exec_always --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "li
 exec_always --no-startup-id feh --bg-scale ~/.wallpaper
 
 exec compton --config ~/.config/compton.conf -b
+
+bindsym $mod+e exec dolphin
 
 # fcitx
 exec --no-startup-id fcitx -d
