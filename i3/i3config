@@ -24,9 +24,9 @@ font pango:monospace 10
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/dot-files/i3/lock.sh
 
-bindsym Mod1+Control+l exec i3lock --nofork
+bindsym Mod1+Control+l exec $HOME/dot-files/i3/lock.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -56,6 +56,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec $HOME/dot-files/i3/rofi.sh
+bindsym $mod+Shift+d exec $HOME/dot-files/i3/rofi-drun.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -201,3 +202,6 @@ bindsym $mod+e exec dolphin
 
 # fcitx
 exec --no-startup-id fcitx -d
+
+#pasystray (Sound)
+exec --no-startup-id pasystray
