@@ -6,5 +6,6 @@
     "workbench.colorTheme": "Spacemacs",
     "editor.fontSize": 14,
     "cmake.configureOnOpen": false,
-    "keyboard.dispatch": "keyCode"
+    "keyboard.dispatch": "keyCode",
+    "window.zoomLevel": 0
 }
