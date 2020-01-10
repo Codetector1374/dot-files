@@ -17,9 +17,11 @@ order += "ethernet _first_"
 order += "battery all"
 order += "disk /"
 order += "load"
+order += "cpu_temperature 0"
 order += "memory"
 order += "volume master"
 order += "tztime local"
+
 
 volume master {
         format = "♪: %volume"
@@ -51,6 +53,7 @@ disk "/" {
 
 load {
         format = "LOAD: %1min"
+        max_threshold = "16.0"
 }
 
 memory {
@@ -61,4 +64,9 @@ memory {
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
+}
+
+
+cpu_temperature 0 {
+  format = "T: %degrees °C"
 }
