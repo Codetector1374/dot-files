@@ -13,11 +13,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'Superbil/llvm.vim'
-
+Plugin 'tpope/vim-obsession'
 Plugin 'c.vim'
 " vim-c0 plugin on Github repo
 " Plugin 'cmugpi/vim-c0'
