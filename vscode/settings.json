@@ -4,8 +4,9 @@
     "telemetry.enableTelemetry": false,
     "editor.snippetSuggestions": "top",
     "workbench.colorTheme": "Spacemacs",
-    "editor.fontSize": 14,
+    "editor.fontSize": 18,
     "cmake.configureOnOpen": false,
     "keyboard.dispatch": "keyCode",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "workbench.startupEditor": "newUntitledFile"
 }
