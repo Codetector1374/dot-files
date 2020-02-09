@@ -346,10 +346,10 @@ you should place your code here."
   (latex-preview-pane-enable)
   (defun my-setup-indent (n)
     ;; java/c/c++
-    (setq standard-indent 4)
-    (setq tab-width 4)
+    (setq standard-indent n)
+    (setq tab-width n)
     (setq indent-tabs-mode nil)
-    (setq c-basic-offset 4)
+    (setq c-basic-offset n)
     ;; web development
     (setq javascript-indent-level n) ; javascript-mode
     (setq js-indent-level n) ; js-mode
@@ -362,6 +362,8 @@ you should place your code here."
     (setq css-indent-offset n) ; css-mode
     )
   (my-setup-indent 2)
+
+  (add-hook 'c-or-c++-mode (my-setup-indent 2))
 
   ;; Java mode
   (setq eclim-eclipse-dirs '("/usr/local/eclipse")
