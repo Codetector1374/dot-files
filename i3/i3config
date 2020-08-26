@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+font pango:monospace 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -33,9 +33,9 @@ bindsym Mod1+Control+l exec $HOME/dot-files/i3/lock.sh
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $AUDIO_ID toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID +5%
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID -5%
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $AUDIO_ID toggle
 
 bindsym Mod4+p exec --no-startup-id sh ~/.disp-init.sh eDP-1 DP-3
 
@@ -204,4 +204,14 @@ bindsym $mod+e exec dolphin
 exec --no-startup-id fcitx -d
 
 #pasystray (Sound)
-exec --no-startup-id pasystray
+#exec --no-startup-id pasystray
+
+exec --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+#bindsym $mod+Ctrl+m exec pavucontrol
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent0
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nm-applet

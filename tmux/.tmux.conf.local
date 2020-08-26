@@ -290,6 +290,7 @@ tmux_conf_copy_to_os_clipboard=false
 # unbind C-b
 # set -g prefix C-a
 # bind C-a send-prefix
+set-option -g default-shell ${SHELL}
 
 # move status line to top
 #set -g status-position top
