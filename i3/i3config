@@ -30,9 +30,9 @@ bindsym Mod1+Control+l exec $HOME/dot-files/i3/lock.sh
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID +5%
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID -5%
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $AUDIO_ID toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $AUDIO_ID toggle
 
 bindsym Mod4+p exec --no-startup-id sh ~/.disp-init.sh eDP-1 DP-3
 
@@ -211,9 +211,9 @@ bindsym $mod+e exec dolphin
 exec --no-startup-id fcitx -d
 
 #pasystray (Sound)
-#exec --no-startup-id pasystray
+exec --no-startup-id pasystray
 
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent0
