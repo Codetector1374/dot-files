@@ -15,7 +15,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Superbil/llvm.vim'
-Plugin 'tpope/vim-obsession'
 Plugin 'c.vim'
 " vim-c0 plugin on Github repo
 " Plugin 'cmugpi/vim-c0'
