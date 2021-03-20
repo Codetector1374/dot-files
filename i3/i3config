@@ -29,13 +29,8 @@ bindsym Mod1+Control+l exec $HOME/dot-files/i3/lock.sh
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $AUDIO_ID -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $AUDIO_ID toggle
-
-bindsym Mod4+p exec --no-startup-id sh ~/.disp-init.sh eDP-1 DP-3
-
+# Use pactl to adjust volume in PulseAudio
+exec --no-startup-id volumeicon
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
@@ -44,8 +39,16 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+hide_edge_borders smart
+default_border pixel 1
+default_floating_border pixel 1 
+
+gaps inner 5
+gaps outer 0
+
+smart_gaps on
+
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec kitty
 
 # kill focused window

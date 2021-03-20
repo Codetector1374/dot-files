@@ -9,6 +9,9 @@
 general {
         colors = true
         interval = 5
+        color_good = "#2AA198"
+        color_bad = "#586E75"
+        color_degraded = "#DC322F"
 }
 
 # order += "ipv6"
@@ -19,17 +22,8 @@ order += "disk /"
 order += "load"
 order += "cpu_temperature 0"
 order += "memory"
-order += "volume master"
 order += "tztime local"
 
-
-volume master {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
-        device = "default"
-        mixer = "Master"
-        mixer_idx = 0
-}
 
 wireless _first_ {
         format_up = "WLAN: (%quality at %essid / %frequency) %ip"
@@ -42,28 +36,42 @@ ethernet _first_ {
 }
 
 battery all {
-        format = "%status %percentage %remaining"
-        format_down = ""
+        # format = "%status %percentage %remaining %emptytime"
+        format = " %status %percentage %emptytime"
+        format_down = "No battery"
         last_full_capacity = true
+        integer_battery_capacity = true
+        # status_chr = ""
+        status_chr = "⚡"
+        # status_bat = "bat"
+        status_bat = "☉"
+        # status_bat = ""
+        # status_unk = "?"
+        status_unk = ""
+        # status_full = ""
+        status_full = "☻"
+        low_threshold = 15
+        threshold_type = time
 }
 
 disk "/" {
         format = "HDD: %avail"
+
 }
 
 load {
-        format = "LOAD: %1min"
+        format = "cpu: %1min"
         max_threshold = "16.0"
 }
 
 memory {
-        format = "MEM: %used AVAL: %available"
+        format = "%used / %available"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "%m-%d %H:%M"
 }
 
 
