@@ -30,7 +30,6 @@ bindsym Mod1+Control+l exec $HOME/dot-files/i3/lock.sh
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio
-exec --no-startup-id volumeicon
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
@@ -49,7 +48,7 @@ gaps outer 0
 smart_gaps on
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -211,10 +210,6 @@ bar {
 	status_command i3blocks
 }
 
-exec_always --no-startup-id ~/.kbd-init.sh
-
-exec_always --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Click Method Enabled" 0 1
-exec_always --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 exec_always --no-startup-id feh --bg-fill ~/.wallpaper
 
@@ -232,6 +227,7 @@ exec --no-startup-id pasystray
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent0
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 
+bindsym --release $mod+shift+s exec scrot -s ~/Pictures/Screenshots/%Y%m%d-%H%M%S.png
 
 # MS Teams BS
 for_window [title="Microsoft Teams Notification"] floating enable
