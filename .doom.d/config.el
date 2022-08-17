@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Yaotian Feng"
+      user-mail-address "codetector@codetector.org")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -21,6 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
+(setq doom-font (font-spec :family "Fira Mono" :size 14))
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
@@ -41,6 +42,20 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
+
+(setq scroll-margin 10)
+
+; better default indent style
+
+(setq c-basic-offset 4
+      tab-width 4
+      indent-tabs-mode t
+      c-default-style "user")
+(setq +format-with-lsp nil)
+
+; https://github.com/syl20bnr/spacemacs/issues/9740
+(with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -74,3 +89,25 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(defun my-arguments-indent()
+  "When called from inside an arguments list, indent it. "
+  (interactive "*")
+  (save-excursion
+    (let* ((pps (syntax-ppss))
+           (orig (point))
+           indent)
+      (while (and (nth 1 pps)(not (eobp)))
+        (setq indent (save-excursion
+                       (when (nth 1 pps)
+                         (goto-char (nth 1 pps))
+                         (forward-char 1)
+                         (skip-chars-forward " \t")
+                         (current-column))))
+        (when (and (< orig (line-beginning-position)) indent)
+          (beginning-of-line)
+          (fixup-whitespace)
+          (indent-to indent))
+        (forward-line 1)
+        (back-to-indentation)
+        (setq pps (syntax-ppss))))))
