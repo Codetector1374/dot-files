@@ -52,6 +52,15 @@
       tab-width 4
       indent-tabs-mode t
       c-default-style "user")
+
+(defun nv-c-style-hook ()
+  (c-set-offset 'arglist-close 0)
+  (c-set-offset 'substatement-open 0)
+  (c-set-offset 'label 0)
+  )
+(add-hook 'c-mode-hook 'nv-c-style-hook)
+
+
 (setq +format-with-lsp nil)
 
 ; https://github.com/syl20bnr/spacemacs/issues/9740
