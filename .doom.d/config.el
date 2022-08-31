@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Fira Mono" :size 14))
+(setq doom-font (font-spec :family "Fira Code" :size 14))
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
@@ -54,11 +54,14 @@
       c-default-style "user")
 
 (defun nv-c-style-hook ()
+  (c-set-offset 'func-decl-cont 0)
   (c-set-offset 'arglist-close 0)
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'label 0)
   )
 (add-hook 'c-mode-hook 'nv-c-style-hook)
+(define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
+(define-key c-mode-base-map [tab] 'tab-to-tab-stop)
 
 
 (setq +format-with-lsp nil)
