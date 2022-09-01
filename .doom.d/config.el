@@ -59,13 +59,16 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'label 0)
   )
-(add-hook 'c-mode-hook 'nv-c-style-hook)
+(if (file-exists-p "~/.nvidia")
+    (add-hook 'c-mode-hook 'nv-c-style-hook)
+)
 
 (defun generic-c-hook ()
   (define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
   (define-key c-mode-base-map [tab] 'tab-to-tab-stop)
 )
 (add-hook 'c-mode-hook 'generic-c-hook)
+
 
 
 (setq +format-with-lsp nil)
