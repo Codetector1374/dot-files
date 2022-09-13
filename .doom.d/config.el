@@ -60,7 +60,10 @@
   (c-set-offset 'label 0)
   )
 (if (file-exists-p "~/.nvidia")
-    (add-hook 'c-mode-hook 'nv-c-style-hook)
+    (progn
+      (message "NVIDIA Profile Loaded")
+      (add-hook 'c-mode-hook 'nv-c-style-hook)
+      )
 )
 
 (defun generic-c-hook ()
@@ -70,12 +73,36 @@
 (add-hook 'c-mode-hook 'generic-c-hook)
 
 
+(defun p4-select-changelist ()
+  "hello"
+  )
+
+
+(defun my-test-fun (filepath)
+  "Mark file as edit in p4"
+  (interactive
+   (list buffer-file-name)
+   )
+  (let ((p4client (getenv "P4CLIENT")))
+    (message "hello %s : client => %s" filepath (p4-select-changelist))
+    )
+  )
+
+(map! :leader
+      (:prefix ("v" . "Version Control")
+       (:prefix ("p" . "Perforce")
+        :desc "p4 edit"
+        "e" #'my-test-fun)))
 
 (setq +format-with-lsp nil)
 
-; https://github.com/syl20bnr/spacemacs/issues/9740
+                                        ; https://github.com/syl20bnr/spacemacs/issues/9740
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
+;; (completing-read
+;;  "Completion Title: "
+;;  '(("foobar" 1) ("bar" 2))
+;;  nil t nil)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -108,25 +135,3 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-(defun my-arguments-indent()
-  "When called from inside an arguments list, indent it. "
-  (interactive "*")
-  (save-excursion
-    (let* ((pps (syntax-ppss))
-           (orig (point))
-           indent)
-      (while (and (nth 1 pps)(not (eobp)))
-        (setq indent (save-excursion
-                       (when (nth 1 pps)
-                         (goto-char (nth 1 pps))
-                         (forward-char 1)
-                         (skip-chars-forward " \t")
-                         (current-column))))
-        (when (and (< orig (line-beginning-position)) indent)
-          (beginning-of-line)
-          (fixup-whitespace)
-          (indent-to indent))
-        (forward-line 1)
-        (back-to-indentation)
-        (setq pps (syntax-ppss))))))
