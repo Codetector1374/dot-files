@@ -99,6 +99,8 @@
                                         ; https://github.com/syl20bnr/spacemacs/issues/9740
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
+;; (delete "" (split-string (shell-command-to-string (format "p4 changes --me -s pending -c %s" (getenv "P4CLIENT"))) "\n"))
+
 ;; (completing-read
 ;;  "Completion Title: "
 ;;  '(("foobar" 1) ("bar" 2))
