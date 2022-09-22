@@ -47,18 +47,45 @@
 (setq scroll-margin 10)
 
 ; better default indent style
+;
+(setq +format-with-lsp nil)
+(setq lsp-enable-indentation nil)
 
 (setq c-basic-offset 4
       tab-width 4
-      indent-tabs-mode t
-      c-default-style "user")
+      c-default-style "gnu")
+
+(defun my-c-hook ()
+  (progn
+    (define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
+    (define-key c-mode-base-map [tab] 'tab-to-tab-stop)
+    (c-add-style "nvidia-rm" '(
+                               (c-basic-offset . 4)
+                               (c-hanging-braces-alist)
+                               (c-offsets-alist
+                                (func-decl-cont . 0)
+                                (arglist-intro . 0)
+                                (arglist-close . 0)
+                                (substatement-open . 0)
+                                (label . 0))
+                               ))
+    )
+  )
+(add-hook 'c-initialization-hook 'my-c-hook)
+
+;; (defun nv-c-style-hook ()
+;;   (c-set-offset 'func-decl-cont 0)
+;;   (c-set-offset 'arglist-close 0)
+;;   (c-set-offset 'substatement-open 0)
+;;   (c-set-offset 'label 0)
+;;   )
 
 (defun nv-c-style-hook ()
-  (c-set-offset 'func-decl-cont 0)
-  (c-set-offset 'arglist-close 0)
-  (c-set-offset 'substatement-open 0)
-  (c-set-offset 'label 0)
-  )
+  (progn
+    (setq c-default-style "nvidia-rm")
+    (c-set-style "nvidia-rm")
+    ))
+
 (if (file-exists-p "~/.nvidia")
     (progn
       (message "NVIDIA Profile Loaded")
@@ -66,45 +93,7 @@
       )
 )
 
-(defun generic-c-hook ()
-  (define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
-  (define-key c-mode-base-map [tab] 'tab-to-tab-stop)
-)
-(add-hook 'c-mode-hook 'generic-c-hook)
-
-
-(defun p4-select-changelist ()
-  "hello"
-  )
-
-
-(defun my-test-fun (filepath)
-  "Mark file as edit in p4"
-  (interactive
-   (list buffer-file-name)
-   )
-  (let ((p4client (getenv "P4CLIENT")))
-    (message "hello %s : client => %s" filepath (p4-select-changelist))
-    )
-  )
-
-(map! :leader
-      (:prefix ("v" . "Version Control")
-       (:prefix ("p" . "Perforce")
-        :desc "p4 edit"
-        "e" #'my-test-fun)))
-
-(setq +format-with-lsp nil)
-
-                                        ; https://github.com/syl20bnr/spacemacs/issues/9740
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
-
-;; (delete "" (split-string (shell-command-to-string (format "p4 changes --me -s pending -c %s" (getenv "P4CLIENT"))) "\n"))
-
-;; (completing-read
-;;  "Completion Title: "
-;;  '(("foobar" 1) ("bar" 2))
-;;  nil t nil)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
