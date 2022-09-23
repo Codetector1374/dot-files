@@ -59,39 +59,40 @@
   (progn
     (define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
     (define-key c-mode-base-map [tab] 'tab-to-tab-stop)
+
+    ;; NV-RM C-Style Config
+    (defun nv-c-offset-statement-cont (ctx)
+      (if (char-equal
+           (char-after (save-excursion (back-to-indentation) (point)))
+           ?{
+           )
+          0
+        '+
+        )
+      )
     (c-add-style "nvidia-rm" '(
                                (c-basic-offset . 4)
                                (c-hanging-braces-alist)
                                (c-offsets-alist
                                 (func-decl-cont . 0)
-                                (arglist-intro . 0)
+                                (arglist-intro . +)
                                 (arglist-close . 0)
                                 (substatement-open . 0)
+                                (statement-cont . nv-c-offset-statement-cont)
                                 (label . 0))
                                ))
+    ;; Apply NV Hook if we see ~/.nvidia
+    (if (file-exists-p "~/.nvidia")
+        (progn
+          (setq c-default-style "nvidia-rm")
+          (c-set-style "nvidia-rm")
+          (message "NVIDIA Profile Loaded")
+          )
+      )
     )
   )
-(add-hook 'c-initialization-hook 'my-c-hook)
+(add-hook 'c-mode-hook 'my-c-hook)
 
-;; (defun nv-c-style-hook ()
-;;   (c-set-offset 'func-decl-cont 0)
-;;   (c-set-offset 'arglist-close 0)
-;;   (c-set-offset 'substatement-open 0)
-;;   (c-set-offset 'label 0)
-;;   )
-
-(defun nv-c-style-hook ()
-  (progn
-    (setq c-default-style "nvidia-rm")
-    (c-set-style "nvidia-rm")
-    ))
-
-(if (file-exists-p "~/.nvidia")
-    (progn
-      (message "NVIDIA Profile Loaded")
-      (add-hook 'c-mode-hook 'nv-c-style-hook)
-      )
-)
 
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
