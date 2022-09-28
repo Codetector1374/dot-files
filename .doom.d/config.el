@@ -71,6 +71,7 @@
         )
       )
     (c-add-style "nvidia-rm" '(
+                               (c-doc-comment-style (c-mode . doxygen))
                                (c-basic-offset . 4)
                                (c-hanging-braces-alist)
                                (c-offsets-alist
@@ -93,6 +94,15 @@
   )
 (add-hook 'c-mode-hook 'my-c-hook)
 
+(add-hook 'perl-mode-hook (lambda () (smartparens-mode 0)))
+
+(sp-local-pair 'c-mode "/*!" "*/"
+               :when '(("RET" "<evil-ret>"))
+               :post-handlers '(:add "||\n[i]"))
+
+(sp-local-pair 'c-mode "/*" "*/"
+               :when '(("RET" "<evil-ret>"))
+               :post-handlers '(:add "||\n[i]"))
 
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
