@@ -55,6 +55,31 @@
       tab-width 4
       c-default-style "gnu")
 
+
+(defun my-c-paren-hooks ()
+  (sp-local-pair 'c-mode "/*!" nil :actions :rem)
+  (sp-local-pair 'c-mode "/*!" "*/"
+                 :post-handlers '((" ||\n [i]" "RET") ("|| " "SPC")))
+
+  (defun priv-cmode-sp-comment-post-hook (id action ctx)
+    (if (save-excursion
+          (back-to-indentation)
+          (if (eq (char-after) ?*) t nil))
+        (progn
+          (save-excursion
+            (insert "\n ")
+            (indent-according-to-mode)))
+      (progn
+        (message "hello")
+        (save-excursion
+          (insert " ")))
+      ))
+  (sp-local-pair 'c-mode "/*" nil :actions :rem)
+  (sp-local-pair 'c-mode "/*" "*/"
+                 :when '(("SPC" "RET" "<evil-ret>"))
+                 :post-handlers '(priv-cmode-sp-comment-post-hook))
+  )
+
 (defun my-c-hook ()
   (progn
     (define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
@@ -82,6 +107,9 @@
                                 (statement-cont . nv-c-offset-statement-cont)
                                 (label . 0))
                                ))
+
+    (my-c-paren-hooks)
+
     ;; Apply NV Hook if we see ~/.nvidia
     (if (file-exists-p "~/.nvidia")
         (progn
@@ -95,14 +123,6 @@
 (add-hook 'c-mode-hook 'my-c-hook)
 
 (add-hook 'perl-mode-hook (lambda () (smartparens-mode 0)))
-
-(sp-local-pair 'c-mode "/*!" "*/"
-               :when '(("RET" "<evil-ret>"))
-               :post-handlers '(:add "||\n[i]"))
-
-(sp-local-pair 'c-mode "/*" "*/"
-               :when '(("RET" "<evil-ret>"))
-               :post-handlers '(:add "||\n[i]"))
 
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
