@@ -33,7 +33,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one-light)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -55,6 +55,9 @@
       tab-width 4
       c-default-style "gnu")
 
+(setq projectile-dirconfig-comment-prefix "#")
+(setq projectile-indexing-method 'native)
+(setq projectile-enable-caching t)
 
 (defun my-c-paren-hooks ()
   (sp-local-pair 'c-mode "/*!" nil :actions :rem)

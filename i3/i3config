@@ -243,3 +243,9 @@ bindsym --release $mod+shift+s exec scrot -s ~/Pictures/Screenshots/%Y%m%d-%H%M%
 # MS Teams BS
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
+
+for_window [class="1Password"] floating enable resize set 800 600 move position center
+
+
+# disable mouse drag
+bindsym --border button1 nop
