@@ -56,7 +56,7 @@
       c-default-style "gnu")
 
 (setq projectile-dirconfig-comment-prefix "#")
-(setq projectile-indexing-method 'native)
+(setq projectile-indexing-method 'alien)
 (setq projectile-enable-caching t)
 
 (defun my-c-paren-hooks ()
@@ -106,6 +106,7 @@
                                 (func-decl-cont . 0)
                                 (arglist-intro . +)
                                 (arglist-close . 0)
+                                (arglist-cont-nonempty . +)
                                 (substatement-open . 0)
                                 (statement-cont . nv-c-offset-statement-cont)
                                 (label . 0))
@@ -119,6 +120,7 @@
           (setq c-default-style "nvidia-rm")
           (c-set-style "nvidia-rm")
           (message "NVIDIA Profile Loaded")
+          (display-fill-column-indicator-mode 1)
           )
       )
     )
@@ -128,6 +130,12 @@
 (add-hook 'perl-mode-hook (lambda () (smartparens-mode 0)))
 
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
+
+(map! :leader :desc "Toggle Shell" "o t" 'shell)
+(map! :leader :desc "Toggle Treemacs" "o ;" 'treemacs)
+(map! :leader
+      (:prefix ("l" . "lsp")
+       :desc "restart-lsp" "r" #'lsp-restart-workspace))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
