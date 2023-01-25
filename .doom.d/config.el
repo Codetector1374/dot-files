@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Fira Code" :size 14))
+(setq doom-font (font-spec :family "Fira Code" :size 18))
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
@@ -61,6 +61,9 @@
 (setq projectile-indexing-method 'alien)
 (setq projectile-enable-caching t)
 
+(after! lsp-mode
+  (setq lsp-clients-clangd-args '("-j=8" "--header-insertion=never" "--query-driver=**")))
+
 (defun my-c-paren-hooks ()
   (sp-local-pair 'c-mode "/*!" nil :actions :rem)
   (sp-local-pair 'c-mode "/*!" "*/"
@@ -75,7 +78,6 @@
             (insert "\n ")
             (indent-according-to-mode)))
       (progn
-        (message "hello")
         (save-excursion
           (insert " ")))
       ))
@@ -85,16 +87,13 @@
                  :post-handlers '(priv-cmode-sp-comment-post-hook))
   )
 
-(after! lsp-mode
-  (setq lsp-clients-clangd-args '("-j=8" "--header-insertion=never")))
-;; (map! :map c-mode-map
-;;       :nv :desc "lsp-format-region" "=" 'lsp-format-region)
+(map! :map c-mode-base-map
+      :i "<tab>" 'tab-to-tab-stop)
+
 (defun my-c-hook ()
   (progn
     (setq +format-with-lsp nil)
     (setq lsp-enable-indentation nil)
-    (define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
-    (define-key c-mode-base-map [tab] 'tab-to-tab-stop)
 
     ;; NV-RM C-Style Config
     (defun nv-c-offset-statement-cont (ctx)
