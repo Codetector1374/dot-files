@@ -44,12 +44,14 @@
 (setq org-directory "~/org/")
 
 
+;; P4
+(add-load-path! "lisp")
+(require 'p4)
+
 (setq scroll-margin 10)
 
 ; better default indent style
 ;
-(setq +format-with-lsp nil)
-(setq lsp-enable-indentation nil)
 
 (setq c-basic-offset 4
       tab-width 4
@@ -83,8 +85,14 @@
                  :post-handlers '(priv-cmode-sp-comment-post-hook))
   )
 
+(after! lsp-mode
+  (setq lsp-clients-clangd-args '("-j=8" "--header-insertion=never")))
+;; (map! :map c-mode-map
+;;       :nv :desc "lsp-format-region" "=" 'lsp-format-region)
 (defun my-c-hook ()
   (progn
+    (setq +format-with-lsp nil)
+    (setq lsp-enable-indentation nil)
     (define-key c-mode-base-map (kbd "<tab>") 'tab-to-tab-stop)
     (define-key c-mode-base-map [tab] 'tab-to-tab-stop)
 
@@ -136,6 +144,12 @@
 (map! :leader
       (:prefix ("l" . "lsp")
        :desc "restart-lsp" "r" #'lsp-restart-workspace))
+
+(map! :leader
+      (:prefix ("v" . "vcs")
+       :desc "p4-add" "a" #'p4-add
+       :desc "p4-edit" "e" #'p4-edit
+       :desc "p4-diff" "d" #'p4-ediff))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
