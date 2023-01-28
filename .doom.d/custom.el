@@ -6,9 +6,7 @@
  '(custom-safe-themes
    '("246a9596178bb806c5f41e5b571546bb6e0f4bd41a9da0df5dfbca7ec6e2250c" default))
  '(warning-suppress-types
-   '((frameset)
-     (frameset)
-     (frameset)
+   '((doom-after-init-hook)
      (frameset)
      (defvaralias))))
 (custom-set-faces
