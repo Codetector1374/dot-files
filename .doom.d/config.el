@@ -92,7 +92,6 @@
 
 (defun my-c-hook ()
   (progn
-    (setq +format-with-lsp nil)
     (setq lsp-enable-indentation nil)
 
     ;; NV-RM C-Style Config
@@ -122,8 +121,10 @@
     (my-c-paren-hooks)
 
     ;; Apply NV Hook if we see ~/.nvidia
+    (setq lsp-enable-indentation t)
     (if (file-exists-p "~/.nvidia")
         (progn
+          (setq lsp-enable-indentation nil)
           (setq c-default-style "nvidia-rm")
           (c-set-style "nvidia-rm")
           (message "NVIDIA Profile Loaded")
@@ -142,7 +143,8 @@
 (map! :leader :desc "Toggle Treemacs" "o ;" 'treemacs)
 (map! :leader
       (:prefix ("l" . "lsp")
-       :desc "restart-lsp" "r" #'lsp-restart-workspace))
+       :desc "restart-lsp" "r" #'lsp-restart-workspace
+       :desc "format-buffer" "f" #'lsp-format-buffer))
 
 (map! :leader
       (:prefix ("v" . "vcs")
