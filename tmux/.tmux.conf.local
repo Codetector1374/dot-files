@@ -303,6 +303,9 @@ tmux-plugins/tmux-continuum '
 set -g @continuum-restore 'on'
 set -g @resurrect-strategy-vim 'session'
 
+# screen-256color is better supported
+set -g default-terminal "screen-256color"
+
 
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
