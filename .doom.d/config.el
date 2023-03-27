@@ -45,9 +45,7 @@
 
 
 ;; P4
-(add-load-path! "lisp")
-(add-load-path! "~/.doom.d/lisp")
-(require 'p4)
+(use-package p4)
 
 (if (file-exists-p "~/.doom.d/config.local.el")
     (load "~/.doom.d/config.local.el"))
