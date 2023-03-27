@@ -43,9 +43,8 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-
 ;; P4
-(use-package p4)
+(use-package! p4)
 
 (if (file-exists-p "~/.doom.d/config.local.el")
     (load "~/.doom.d/config.local.el"))
