@@ -226,8 +226,8 @@ exec_always --no-startup-id feh --bg-fill ~/.wallpaper
 
 bindsym $mod+e exec dolphin
 
-# fcitx
-exec --no-startup-id fcitx -d
+# fcitx5
+exec --no-startup-id fcitx5 -d
 
 #pasystray (Sound)
 exec --no-startup-id pasystray
