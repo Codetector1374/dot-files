@@ -51,6 +51,9 @@
 
 (setq scroll-margin 10)
 
+;; .nvmk -> makefile
+(add-to-list 'auto-mode-alist '("\\.nvmk\\'" . makefile-mode))
+
 ; better default indent style
 ;
 
@@ -90,6 +93,8 @@
 
 (map! :map c-mode-base-map
       :i "<tab>" 'tab-to-tab-stop)
+(map! :map c-mode-base-map
+      :i "TAB" 'tab-to-tab-stop)
 
 (defun my-c-hook ()
   (progn

@@ -14,7 +14,8 @@
 (package! p4
   :recipe (:local-repo "~/.doom.d/lisp"
                        :files ("p4.el")
-		       :build (:not compile)))
+		       ;; :build (:not compile)
+		       ))
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
