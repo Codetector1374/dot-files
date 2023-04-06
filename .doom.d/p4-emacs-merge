@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+## add P4MERGE=<this script> to ~/.p4enviro
+
+ancestor=$1
+theirs=$2
+yours=$3
+merge_result=$4
+
+if [ "$#" -ne 4 ]; then
+  echo "<ancestor> <theirs> <yours> <result>"
+  exit 2
+fi
+
+emacsclient -e "(ediff-merge-files-with-ancestor \"${yours}\" \"${theirs}\" \"${ancestor}\" () \"${merge_result}\")"
+emacsclient "${merge_result}"
