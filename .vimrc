@@ -1,34 +1,15 @@
-" Great Practical Ideas for Computer Scientists
-" Sample .vimrc file
-
-
 " Ensure that we are in modern vim mode, not backwards-compatible vi mode
 set nocompatible
 set backspace=indent,eol,start
-filetype off " required for Vundle plugin manager
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Superbil/llvm.vim'
-Plugin 'c.vim'
-" vim-c0 plugin on Github repo
-" Plugin 'cmugpi/vim-c0'
-
-call vundle#end()
 
 " Helpful information: cursor position in bottom right, line numbers on
 " left
 set ruler
 set number
 
-set tabstop=2
+set tabstop=4
 set softtabstop=0 expandtab
-set shiftwidth=2
+set shiftwidth=4
 "Enable filetype detection and syntax hilighting
 syntax on
 filetype on
