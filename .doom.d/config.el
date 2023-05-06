@@ -124,7 +124,7 @@
                                 (label . 0))
                                ))
 
-    (my-c-paren-hooks)
+    (display-fill-column-indicator-mode 1)
 
     ;; Apply NV Hook if we see ~/.nvidia
     (setq lsp-enable-indentation t)
@@ -134,7 +134,7 @@
           (setq c-default-style "nvidia-rm")
           (c-set-style "nvidia-rm")
           (message "NVIDIA Profile Loaded")
-          (display-fill-column-indicator-mode 1)
+          (my-c-paren-hooks)
           )
       )
     )

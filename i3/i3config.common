@@ -226,8 +226,8 @@ exec_always --no-startup-id feh --bg-fill ~/.wallpaper
 
 bindsym $mod+e exec dolphin
 
-# fcitx5
-exec --no-startup-id fcitx5 -d
+# fcitx
+exec --no-startup-id fcitx -d
 
 #pasystray (Sound)
 exec --no-startup-id pasystray
@@ -238,7 +238,7 @@ exec --no-startup-id pasystray
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent0
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 
-bindsym --release $mod+shift+s exec flameshot gui
+bindsym --release $mod+shift+s exec scrot -s ~/Pictures/Screenshots/%Y%m%d-%H%M%S.png
 
 # MS Teams BS
 for_window [title="Microsoft Teams Notification"] floating enable
