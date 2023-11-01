@@ -10,6 +10,7 @@
 ;(package! some-package)
 
 (package! cl-libify)
+(package! clipetty)
 
 (package! p4
   :recipe (:local-repo "~/.doom.d/lisp"

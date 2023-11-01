@@ -46,10 +46,15 @@
 ;; P4
 (use-package! p4)
 
+(use-package! clipetty
+  :ensure t
+  :hook (after-init . global-clipetty-mode))
+
 (if (file-exists-p "~/.doom.d/config.local.el")
     (load "~/.doom.d/config.local.el"))
 
 (setq scroll-margin 10)
+(setq display-line-numbers-type 'relative)
 
 ;; .nvmk -> makefile
 (add-to-list 'auto-mode-alist '("\\.nvmk\\'" . makefile-mode))
@@ -157,6 +162,9 @@
        :desc "p4-add" "a" #'p4-add
        :desc "p4-edit" "e" #'p4-edit
        :desc "p4-diff" "d" #'p4-ediff))
+
+(map! :desc "flycheck prev error" :n "[ e" 'flycheck-previous-error)
+(map! :desc "flycheck next error" :n "] e" 'flycheck-next-error)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

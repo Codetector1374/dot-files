@@ -306,6 +306,9 @@ set -g @resurrect-strategy-vim 'session'
 # screen-256color is better supported
 set -g default-terminal "screen-256color"
 
+set -s set-clipboard on
+set -ag update-environment "SSH_TTY"
+
 
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
