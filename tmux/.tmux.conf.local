@@ -307,7 +307,7 @@ set -g @resurrect-strategy-vim 'session'
 set -g default-terminal "screen-256color"
 
 set -s set-clipboard on
-set -ag update-environment "SSH_TTY"
+set -g update-environment "SSH_TTY"
 
 
 # Other examples:
