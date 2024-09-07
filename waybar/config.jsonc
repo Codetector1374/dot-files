@@ -212,6 +212,9 @@
     "hyprland/window": {
         "separate-outputs": true
     },
+    "hyprland/workspaces": {
+        "format": "{id}: {name}"
+    },
     "custom/notification": {
         "tooltip": false,
         "format": "{icon}",
