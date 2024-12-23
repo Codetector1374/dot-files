@@ -16,6 +16,10 @@ filetype on
 filetype indent on
 filetype plugin on
 
+" Nix use 2 tab
+autocmd FileType nix set tabstop=2
+autocmd FileType nix set shiftwidth=2
+
 " Indent as intelligently as vim knows how
 set smartindent
 

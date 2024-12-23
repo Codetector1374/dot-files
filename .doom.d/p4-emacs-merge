@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 ## add P4MERGE=<this script> to ~/.p4enviro
 
