@@ -96,9 +96,9 @@
                  :post-handlers '(priv-cmode-sp-comment-post-hook))
   )
 
-(map! :map c-mode-base-map
+(map! :map global-map
       :i "<tab>" 'tab-to-tab-stop)
-(map! :map c-mode-base-map
+(map! :map global-map
       :i "TAB" 'tab-to-tab-stop)
 
 (defun my-c-hook ()

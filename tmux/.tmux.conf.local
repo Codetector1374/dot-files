@@ -282,7 +282,7 @@ tmux_conf_copy_to_os_clipboard=false
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi
-#set -g mode-keys vi
+set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
@@ -307,8 +307,11 @@ set -g @resurrect-strategy-vim 'session'
 set -g default-terminal "screen-256color"
 
 set -s set-clipboard on
-set -g update-environment "SSH_TTY"
+set -ag update-environment "SSH_TTY"
+set -g allow-passthrough on
 
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
 
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
