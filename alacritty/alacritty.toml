@@ -9,5 +9,10 @@ size = 14
 [bell]
 duration = 0
 
+[keyboard]
+bindings = [
+    { key = "Insert", mods = "Shift", action = "Paste" }
+]
+
 [terminal]
 osc52 = "OnlyCopy"
