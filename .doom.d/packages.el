@@ -13,13 +13,18 @@
 (package! clipetty)
 
 (package! p4
-  :recipe (:local-repo "~/.doom.d/lisp"
+  :recipe (:local-repo "~/dot-files/.doom.d/lisp"
                        :files ("p4.el")
                        ))
 
 (package! yaml-mode
-  :recipe (:local-repo "~/.doom.d/lisp"
+  :recipe (:local-repo "~/dot-files/.doom.d/lisp"
                        :files ("yaml-mode.el")
+                       ))
+
+(package! bazel
+  :recipe (:local-repo "~/dot-files/.doom.d/lisp"
+                       :files ("bazel.el")
                        ))
 
 ;; To install a package directly from a remote git repo, you must specify a
