@@ -2084,7 +2084,8 @@ with workspace changes made outside of Perforce."
 (defp4cmd* reopen
   "Change the filetype of an open file or move it to another
 changelist."
-  (p4-context-filenames-list)
+  (append (list "-c" (p4-completing-read 'pending "Reopen in change: "))
+    (p4-context-filenames-list))
   (p4-call-command cmd args :mode 'p4-basic-list-mode
                    :callback (p4-refresh-callback)))
 
@@ -3317,7 +3318,7 @@ is NIL, otherwise return NIL."
       (p4-reopen (list "-t" type (match-string 2))))))
 
 (defun p4-opened-list-change (change)
-  (interactive 
+  (interactive
    (list (p4-completing-read 'pending "New change: ")))
   (save-excursion
     (beginning-of-line)

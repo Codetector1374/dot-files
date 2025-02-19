@@ -160,6 +160,7 @@
 (map! :leader
       (:prefix ("v" . "vcs")
        :desc "p4-add" "a" #'p4-add
+       :desc "p4-reopen" "r" #'p4-reopen
        :desc "p4-edit" "e" #'p4-edit
        :desc "p4-diff" "d" #'p4-ediff))
 
