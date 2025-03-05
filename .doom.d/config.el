@@ -45,6 +45,7 @@
 
 ;; P4
 (use-package! p4)
+(use-package! ada-mode)
 
 (use-package! clipetty
   :ensure t

@@ -11,6 +11,8 @@
 
 (package! cl-libify)
 (package! clipetty)
+(package! gpr-query)
+(package! ada-mode)
 
 (package! p4
   :recipe (:local-repo "~/dot-files/.doom.d/lisp"
