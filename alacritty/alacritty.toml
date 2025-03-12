@@ -1,6 +1,9 @@
 [general]
 live_config_reload = true
 ipc_socket = false
+import = [
+    "local.toml"
+]
 
 [font]
 normal = { family = "Fira Mono", style = "Regular" }
