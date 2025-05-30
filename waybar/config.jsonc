@@ -5,11 +5,8 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
+        "sway/workspaces"
     ],
-//    "modules-center": [
-//        "hyprland/window"
-//    ],
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
@@ -35,7 +32,7 @@
         "interval": 1,
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": 
+        "calendar":
         {
             "mode"          : "month",
             "weeks-pos"     : "right",
@@ -63,7 +60,7 @@
         "format-icons": ["", "", ""]
     },
     "pulseaudio": {
-        "scroll-step": 5, 
+        "scroll-step": 5,
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -73,14 +70,6 @@
         "format-icons": {
             "default": ["", "", ""]
         }
-    },
-    "hyprland/window": {
-        "separate-outputs": true,
-        "icon": true,
-        "icon-size": 20
-    },
-    "hyprland/workspaces": {
-        "format": "{id}: {name}"
     },
     "custom/notification": {
         "tooltip": false,
