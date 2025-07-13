@@ -124,30 +124,33 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Special keys to adjust volume via PulseAudio
-bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+#bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+#bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+#bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+#bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 # Special keys to adjust brightness via brightnessctl
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+#bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+#bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Special key to take a screenshot with grim
 bindsym Print exec bash -c 'grim -g "$(slurp)" - | wl-copy'
 bindsym $mod+Shift+s exec bash -c 'grim -g "$(slurp)" - | wl-copy'
 
-
+bindsym Ctrl+Alt+Q exec swaylock
 
 output * bg ~/Pictures/wallpaper.png fill
 
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-# Start notification daemon (swaync)
-exec swaync
 
 # Start waybar as the status bar
 bar {
+    id main
     swaybar_command waybar
 }
+
+# Start notification daemon (swaync)
+exec swaync
+exec swayidle
 
 include /etc/sway/config.d/*
