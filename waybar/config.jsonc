@@ -11,6 +11,7 @@
         "idle_inhibitor",
         "pulseaudio",
         "cpu",
+        "network",
         "memory",
         "temperature",
         "clock",
@@ -49,6 +50,12 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": true
+    },
+    "network": {
+        "min-length": 20,
+        "interface": "enp*",
+        "interval": 1,
+        "format-ethernet": " {bandwidthUpBits}  {bandwidthDownBits}"
     },
     "memory": {
         "format": "{}% ",

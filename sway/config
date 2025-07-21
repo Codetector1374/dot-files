@@ -1,3 +1,10 @@
+set {
+  $term alacritty
+  $term_id alacritty.dropdown
+
+  $file_manager dolphin
+}
+
 set $mod Mod4
 
 font pango:DejaVu Sans Mono 12
@@ -12,7 +19,8 @@ gaps outer 5
 
 smart_gaps on
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $term
+bindsym $mod+e exec $file_manager
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -40,8 +48,8 @@ bindsym $mod+Ctrl+Shift+j move workspace to output down
 bindsym $mod+Ctrl+Shift+k move workspace to output up
 bindsym $mod+Ctrl+Shift+l move workspace to output right
 
-bindsym Ctrl+space scratchpad show
-bindsym $mod+Ctrl+space move scratchpad
+bindsym --to-code Ctrl+space exec (swaymsg "[app_id=$term_id] scratchpad show") || exec $term --class $term_id
+for_window [app_id=$term_id] floating enable, border pixel 1, resize set 100 ppt 90 ppt, move position center,  move to scratchpad, scratchpad show
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -152,5 +160,9 @@ bar {
 # Start notification daemon (swaync)
 exec swaync
 exec swayidle
+
+# AAGL
+for_window [app_id="Anime Games Launcher"] floating enable
+for_window [class="1Password"] floating enable, move position center, resize set 50 ppt 50 ppt
 
 include /etc/sway/config.d/*
