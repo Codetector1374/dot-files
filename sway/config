@@ -146,7 +146,6 @@ bindsym $mod+Shift+s exec bash -c 'grim -g "$(slurp)" - | wl-copy'
 
 bindsym Ctrl+Alt+Q exec swaylock
 
-output * bg ~/Pictures/wallpaper.png fill
 
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
@@ -166,3 +165,7 @@ for_window [app_id="Anime Games Launcher"] floating enable
 for_window [class="1Password"] floating enable, move position center, resize set 50 ppt 50 ppt
 
 include /etc/sway/config.d/*
+
+# Add this to your local config to set a wallpaper
+# output * bg ~/Pictures/wallpaper.png fill
+include .local/*.conf
