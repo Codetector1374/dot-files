@@ -53,7 +53,7 @@
     },
     "network": {
         "min-length": 20,
-        "interface": "enp*",
+        "interface": "en*",
         "interval": 1,
         "format-ethernet": " {bandwidthUpBits}  {bandwidthDownBits}"
     },

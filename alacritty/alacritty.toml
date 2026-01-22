@@ -19,3 +19,6 @@ bindings = [
 
 [terminal]
 osc52 = "OnlyCopy"
+
+[env]
+TERM = "xterm-256color"
